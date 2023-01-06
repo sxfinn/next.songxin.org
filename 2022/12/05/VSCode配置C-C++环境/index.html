@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"next.xinsong.xyz","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"next.xinsong.xyz","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="转载自：【教程】VScode中配置C语言&#x2F;C++运行环境_哔哩哔哩_bilibili  下载编辑器VScode 官网：https:&#x2F;&#x2F;code.visualstudio.com&#x2F;">
 <meta property="og:type" content="article">
@@ -25,7 +25,7 @@
 <meta property="og:url" content="http://next.xinsong.xyz/2022/12/05/VSCode%E9%85%8D%E7%BD%AEC-C++%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="转载自：【教程】VScode中配置C语言&#x2F;C++运行环境_哔哩哔哩_bilibili  下载编辑器VScode 官网：https:&#x2F;&#x2F;code.visualstudio.com&#x2F;">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529307.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529086.gif">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529461.png">
@@ -52,7 +52,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://next.xinsong.xyz/2022/12/05/VSCode%E9%85%8D%E7%BD%AEC-C++%E7%8E%AF%E5%A2%83/","path":"2022/12/05/VSCode配置C-C++环境/","title":"VSCode配置C-C++环境"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://next.xinsong.xyz/2022/12/05/VSCode%E9%85%8D%E7%BD%AEC-C++%E7%8E%AF%E5%A2%83/","path":"2022/12/05/VSCode配置C-C++环境/","title":"VSCode配置C-C++环境"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>VSCode配置C-C++环境 | Hexo</title>
@@ -79,7 +79,7 @@
     <div class="column">
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -97,7 +97,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -106,9 +106,9 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
@@ -123,7 +123,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close" role="button">
@@ -147,10 +147,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -173,18 +173,18 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">5</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
         <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -220,7 +220,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://next.xinsong.xyz/2022/12/05/VSCode%E9%85%8D%E7%BD%AEC-C++%E7%8E%AF%E5%A2%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -248,22 +248,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="Created: 2022-12-05 17:08:35" itemprop="dateCreated datePublished" datetime="2022-12-05T17:08:35+08:00">2022-12-05</time>
+      <time title="创建时间：2022-12-05 17:08:35" itemprop="dateCreated datePublished" datetime="2022-12-05T17:08:35+08:00">2022-12-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-07 14:16:09" itemprop="dateModified" datetime="2022-12-07T14:16:09+08:00">2022-12-07</time>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-07 14:16:09" itemprop="dateModified" datetime="2022-12-07T14:16:09+08:00">2022-12-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">In</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
         </span>
@@ -417,14 +417,14 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>Post author:  </strong>NcPhoton
+      <strong>本文作者： </strong>NcPhoton
   </li>
   <li class="post-copyright-link">
-      <strong>Post link: </strong>
+      <strong>本文链接：</strong>
       <a href="http://next.xinsong.xyz/2022/12/05/VSCode%E9%85%8D%E7%BD%AEC-C++%E7%8E%AF%E5%A2%83/" title="VSCode配置C-C++环境">http://next.xinsong.xyz/2022/12/05/VSCode配置C-C++环境/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -474,14 +474,14 @@
   </span>
   <span class="author" itemprop="copyrightHolder">NcPhoton</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
     </div>
   </footer>
 
   
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
