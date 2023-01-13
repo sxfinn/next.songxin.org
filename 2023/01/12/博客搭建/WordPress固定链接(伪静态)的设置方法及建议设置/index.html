@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.songxin.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="WordPress 是一个 CMS 管理系统，也就是说，WordPress 的文章、页面、存档页都是通过程序从数据库里面获取数据生成的。虽然 WordPress 的页面可以有千千万万个，但是我们访问这些页面的入口只有一个，那就是根目录的「index.php」，我们访问一个页面时，其实访问的就是「inxdex.php」这个文件，然后这个文件根据全局变量和页面的一些参数，从数据库中获取数据、生成页面，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress固定链接(伪静态)的设置方法及建议设置">
+<meta property="og:url" content="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/WordPress%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5(%E4%BC%AA%E9%9D%99%E6%80%81)%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BB%BA%E8%AE%AE%E8%AE%BE%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Nico&#39;s Blog">
+<meta property="og:description" content="WordPress 是一个 CMS 管理系统，也就是说，WordPress 的文章、页面、存档页都是通过程序从数据库里面获取数据生成的。虽然 WordPress 的页面可以有千千万万个，但是我们访问这些页面的入口只有一个，那就是根目录的「index.php」，我们访问一个页面时，其实访问的就是「inxdex.php」这个文件，然后这个文件根据全局变量和页面的一些参数，从数据库中获取数据、生成页面，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-12T15:51:46.000Z">
+<meta property="article:modified_time" content="2023-01-12T15:52:59.876Z">
+<meta property="article:author" content="NcPhoton">
+<meta property="article:tag" content="固定链接">
+<meta property="article:tag" content="wordpress">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/WordPress%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5(%E4%BC%AA%E9%9D%99%E6%80%81)%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BB%BA%E8%AE%AE%E8%AE%BE%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/WordPress%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5(%E4%BC%AA%E9%9D%99%E6%80%81)%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BB%BA%E8%AE%AE%E8%AE%BE%E7%BD%AE/","path":"2023/01/12/博客搭建/WordPress固定链接(伪静态)的设置方法及建议设置/","title":"WordPress固定链接(伪静态)的设置方法及建议设置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WordPress固定链接(伪静态)的设置方法及建议设置 | Nico's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<script defer src="/live2d-widget/autoload.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Nico's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">做了一点微小的工作</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E7%BD%AE%E4%BC%AA%E9%9D%99%E6%80%81"><span class="nav-number">1.</span> <span class="nav-text">为什么要设置伪静态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%8E%BB%E6%8E%89-index-php"><span class="nav-number">2.</span> <span class="nav-text">怎么去掉 index.php</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache%E3%80%81Nginx%E3%80%81IIS-%E7%AD%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%B9%E4%BC%AA%E9%9D%99%E6%80%81%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-number">3.</span> <span class="nav-text">Apache、Nginx、IIS 等服务器对伪静态的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx-%E4%BC%AA%E9%9D%99%E6%80%81%E8%A7%84%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">Nginx 伪静态规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IIS-%E4%BC%AA%E9%9D%99%E6%80%81%E8%A7%84%E5%88%99"><span class="nav-number">5.</span> <span class="nav-text">IIS 伪静态规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache-%E4%BC%AA%E9%9D%99%E6%80%81%E8%A7%84%E5%88%99"><span class="nav-number">6.</span> <span class="nav-text">Apache 伪静态规则</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NcPhoton"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">NcPhoton</p>
+  <div class="site-description" itemprop="description">今日事今日毕</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sxfinn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sxfinn" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:sxnicoa@gmail.com" title="E-Mail → mailto:sxnicoa@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/WordPress%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5(%E4%BC%AA%E9%9D%99%E6%80%81)%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BB%BA%E8%AE%AE%E8%AE%BE%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="NcPhoton">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nico's Blog">
+      <meta itemprop="description" content="今日事今日毕">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="WordPress固定链接(伪静态)的设置方法及建议设置 | Nico's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WordPress固定链接(伪静态)的设置方法及建议设置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-12 23:51:46 / 修改时间：23:52:59" itemprop="dateCreated datePublished" datetime="2023-01-12T23:51:46+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/WordPress/" itemprop="url" rel="index"><span itemprop="name">WordPress</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>WordPress 是一个 CMS 管理系统，也就是说，WordPress 的文章、页面、存档页都是通过程序从数据库里面获取数据生成的。虽然 WordPress 的页面可以有千千万万个，但是我们访问这些页面的入口只有一个，那就是根目录的「index.php」，我们访问一个页面时，其实访问的就是「inxdex.php」这个文件，然后这个文件根据全局变量和页面的一些参数，从数据库中获取数据、生成页面，最终发送给我们。</p>
+<span id="more"></span>
+
+<h3 id="为什么要设置伪静态"><a href="#为什么要设置伪静态" class="headerlink" title="为什么要设置伪静态"></a>为什么要设置伪静态</h3><p>默认安装环境下，我们访问 WordPress 文章页的 URL 地址为 <code>https://exaple.com/index.php?p=123</code>，这个 URL 中，example.com 是我们的域名，“index.php” 就是我们上面说到的 WordPress 页面入口文件，<code>?p=123</code> 是这个 URL 的参数，其中 <code>123</code> 为页面 ID，index.php 就是根据这个页面 ID 从 <a target="_blank" rel="noopener" href="https://www.wpzhiku.com/tag/wordpress%E6%95%B0%E6%8D%AE%E5%BA%93/">WordPress 数据库</a>中获取页面内容，生成页面展示给我们的。</p>
+<h3 id="怎么去掉-index-php"><a href="#怎么去掉-index-php" class="headerlink" title="怎么去掉 index.php"></a>怎么去掉 index.php</h3><p>为了让 URL 更好看一些，对 SEO 更友好一些，很多朋友都会想把这个 index.php 去掉，怎么办到呢？很简单，在 WordPress 的「<strong>设置 &gt; 固定链接</strong>」设置中选择除了「<strong>朴素</strong>」之外的其他选项就可以了，保存之后，我们就为 WordPress 开启了伪静态设置。</p>
+<p>为了让 URL 更具语义，我们建议选择「<strong>文章名</strong>」的 URL 结构，如果你不想让 URL 中出现中文，可以使用我们开发的 <a target="_blank" rel="noopener" href="https://www.wpzhiku.com/wenprise-pinyin-slug/">Wenprise Pinyin Slug</a> 插件自动把 URL 中的中文转换为拼音或英文名。</p>
+<h3 id="Apache、Nginx、IIS-等服务器对伪静态的支持"><a href="#Apache、Nginx、IIS-等服务器对伪静态的支持" class="headerlink" title="Apache、Nginx、IIS 等服务器对伪静态的支持"></a>Apache、Nginx、IIS 等服务器对伪静态的支持</h3><p>做了固定链接设置之后，可能有朋友发现，自己的网站，除了首页，其他页面都打不开了，这是因为你的服务器没有配置对 URL 重定向（也就是伪静态的支持），我们需要为服务器打开 URL 重定向支持。</p>
+<h3 id="Nginx-伪静态规则"><a href="#Nginx-伪静态规则" class="headerlink" title="Nginx 伪静态规则"></a>Nginx 伪静态规则</h3><p>根据我们所了解到的情况，大部分 WordPress 站点现在都是使用的 Nginx 作为 Web 服务器，为 Nginx 添加伪静态设置非常简单，找到您的虚拟主机配置文件，添加以下 Nginx 规则，然后运行 <code>nginx -s reload</code> 重新加载 Nginx 配置就可以了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    index index.php index.html index.htm;</span><br><span class="line">    try_files $uri $uri/ /index.php?$args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="IIS-伪静态规则"><a href="#IIS-伪静态规则" class="headerlink" title="IIS 伪静态规则"></a>IIS 伪静态规则</h3><p>相信用 IIS 作为 WordPress 的 Web 服务器的朋友不多吧？具体设置方法就不说了，以防万一用得着，把 IIS URL 重定向的设置方法参考链接放到这里好了。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.iis.net/downloads/microsoft/url-rewrite">IIS URL Rewrite 模块</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/enabling-pretty-permalinks-in-wordpress">Enabling Pretty Permalinks in WordPress</a></li>
+</ul>
+<h3 id="Apache-伪静态规则"><a href="#Apache-伪静态规则" class="headerlink" title="Apache 伪静态规则"></a>Apache 伪静态规则</h3><p>大多数 Apache 服务器都支持使用 .htaccess 文件设置重定向规则，只要您的服务器支持 .htacees 文件，在设置 WordPress 固定链接的时候，WordPress 会自动生成或更新这个文件，不用太多d的设置。</p>
+<p>如果您的 Apache 服务器不支持 .htaccess，找管理员提供支持或者参考下面的链接设置即可。</p>
+<p><a target="_blank" rel="noopener" href="https://www.linode.com/docs/web-servers/apache/how-to-set-up-htaccess-on-apache/">怎么在 Apache 设置设置 htaccess 文件</a></p>
+<p>基本上，支持伪静态设置是每个 WordPress 服务器的基本修养之一，URL 伪静态也是 WordPress SEO 需要做的基本事项之一，每个有追求的 WordPress 站点都要做到。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>NcPhoton
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/WordPress%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5(%E4%BC%AA%E9%9D%99%E6%80%81)%E7%9A%84%E8%AE%BE%E7%BD%AE%E6%96%B9%E6%B3%95%E5%8F%8A%E5%BB%BA%E8%AE%AE%E8%AE%BE%E7%BD%AE/" title="WordPress固定链接(伪静态)的设置方法及建议设置">http://www.songxin.org/2023/01/12/博客搭建/WordPress固定链接(伪静态)的设置方法及建议设置/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5/" rel="tag"># 固定链接</a>
+              <a href="/tags/wordpress/" rel="tag"># wordpress</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%94%AF%E4%B8%80%E9%93%BE%E6%8E%A5/" rel="prev" title="Hexo博客文章唯一链接">
+                  <i class="fa fa-chevron-left"></i> Hexo博客文章唯一链接
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B-Clash-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9C%A8%E7%BA%BF%E5%88%86%E6%B5%81%E8%A7%84%E5%88%99%E7%AD%96%E7%95%A5%E7%BB%84/" rel="next" title="简易教程-Clash-自定义在线分流规则策略组">
+                  简易教程-Clash-自定义在线分流规则策略组 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NcPhoton</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

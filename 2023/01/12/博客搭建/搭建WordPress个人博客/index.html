@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.songxin.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="简介 WordPress是一个以PHP和MySQL为平台的自由开源的博客软件和内容管理系统。WordPress具有插件架构和模板系统。 截至2018年4月，排名前1000万的网站中超过30.6%使用WordPress 。WordPress 是最受欢迎的网站内容管理系统全球有大约40%的网站（7亿5000个）都是使用WordPress 架设网站的。WordPress 是目前因特网上最流行的博客系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建WordPress个人博客">
+<meta property="og:url" content="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%90%AD%E5%BB%BAWordPress%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Nico&#39;s Blog">
+<meta property="og:description" content="简介 WordPress是一个以PHP和MySQL为平台的自由开源的博客软件和内容管理系统。WordPress具有插件架构和模板系统。 截至2018年4月，排名前1000万的网站中超过30.6%使用WordPress 。WordPress 是最受欢迎的网站内容管理系统全球有大约40%的网站（7亿5000个）都是使用WordPress 架设网站的。WordPress 是目前因特网上最流行的博客系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021423840.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021423263.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424966.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424717.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424530.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424901.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424100.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425461.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425275.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425016.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425881.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425857.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426490.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426503.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426900.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426413.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426591.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426187.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427775.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427929.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427204.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427229.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427732.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428874.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428261.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428767.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428118.png">
+<meta property="article:published_time" content="2023-01-12T15:47:00.000Z">
+<meta property="article:modified_time" content="2023-01-12T15:54:20.134Z">
+<meta property="article:author" content="NcPhoton">
+<meta property="article:tag" content="wordpress">
+<meta property="article:tag" content="博客搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021423840.png">
+
+
+<link rel="canonical" href="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%90%AD%E5%BB%BAWordPress%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%90%AD%E5%BB%BAWordPress%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/","path":"2023/01/12/博客搭建/搭建WordPress个人博客/","title":"搭建WordPress个人博客"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>搭建WordPress个人博客 | Nico's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<script defer src="/live2d-widget/autoload.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Nico's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">做了一点微小的工作</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%95%99%E7%A8%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="nav-number">2.1.</span> <span class="nav-text">本教程使用的环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">开始搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0WordPress%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">上传WordPress文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D"><span class="nav-number">3.2.</span> <span class="nav-text">解析域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WordPress"><span class="nav-number">3.3.</span> <span class="nav-text">安装WordPress</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BC%AA%E9%9D%99%E6%80%81"><span class="nav-number">3.4.</span> <span class="nav-text">设置伪静态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E4%BC%AA%E9%9D%99%E6%80%81%E8%A7%84%E5%88%99"><span class="nav-number">3.4.1.</span> <span class="nav-text">设置伪静态规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%9B%BA%E5%AE%9A%E9%93%BE%E6%8E%A5"><span class="nav-number">3.4.2.</span> <span class="nav-text">设置固定链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98-amp-%E6%8F%92%E4%BB%B6"><span class="nav-number">3.5.</span> <span class="nav-text">主题 &amp; 插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">安装过程可能会遇到的问题</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NcPhoton"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">NcPhoton</p>
+  <div class="site-description" itemprop="description">今日事今日毕</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sxfinn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sxfinn" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:sxnicoa@gmail.com" title="E-Mail → mailto:sxnicoa@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%90%AD%E5%BB%BAWordPress%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="NcPhoton">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nico's Blog">
+      <meta itemprop="description" content="今日事今日毕">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="搭建WordPress个人博客 | Nico's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          搭建WordPress个人博客
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-12 23:47:00 / 修改时间：23:54:20" itemprop="dateCreated datePublished" datetime="2023-01-12T23:47:00+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021423840.png" alt="image-20221202142349665"></p>
+<p><strong>WordPress</strong>是一个以PHP和MySQL为平台的自由开源的博客软件和内容管理系统。WordPress具有插件架构和模板系统。 截至2018年4月，排名前1000万的网站中超过30.6%使用WordPress 。WordPress 是最受欢迎的网站内容管理系统全球有大约40%的网站（7亿5000个）都是使用WordPress 架设网站的。WordPress 是目前因特网上最流行的博客系统 。WordPress在最著名的网络发布阶段中脱颖而出。如今，它被使用在超过7000万个站点上。</p>
+<span id="more"></span>
+
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>WordPress具有一个带模板处理器（template processor）的页面模板系统（web template system）。</p>
+<p><strong>主题编辑</strong></p>
+<p>WordPress用户可以安装和切换主题。主题可让用户不改变博客内容和结构的情况下更改界面和WordPress站点的功能。主题可以在WordPress的“外观”管理工具中安装，或者通过FTP上传至主题文件夹。也可以通过编辑主题中的PHP和HTML代码自定义主题。</p>
+<p><strong>插件编辑</strong></p>
+<p><a target="_blank" rel="noopener" href="https://wordpress.org/">WordPress</a> （页面存档备份，存于互联网档案馆）的一个特性是它丰富的插件架构，插件能使用户和开发者扩展WordPress程序的功能。当前WordPress插件数据库中有超过18000个插件，包括<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/SEO">SEO</a>、<a target="_blank" rel="noopener" href="https://zh.m.wikipedia.org/wiki/%E6%8E%A7%E4%BB%B6">控件</a>等等。</p>
+<p><strong>多作者共同写作和多博客共存编辑</strong></p>
+<p>在WordPress 3.0之前，尽管多个在不同目录中的WordPress程序能被配置成使用不同的数据库，但此时程序仅支持一次部署建立一个博客。WordPress Multi-User（WordPress MU，或简称WPMU）从WordPress中分支，支持一次部署并建立多个博客，还能够被管理员统一管理。WordPress MU成功地使一个网站能够建立自己的博客社群，同时在一个控制面板中控制修改所有的博客。WordPress MU为每个博客建立了八个新数据表。</p>
+<hr>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> <strong>云服务器一台</strong></li>
+<li><input checked="" disabled="" type="checkbox"> <strong>域名一个</strong>（如果是国内服务器需要备案）</li>
+</ul>
+<h3 id="本教程使用的环境"><a href="#本教程使用的环境" class="headerlink" title="本教程使用的环境"></a>本教程使用的环境</h3><ul>
+<li><strong>CentOS 7.9.2009 x86_64(Py3.7.9)</strong></li>
+<li><strong>宝塔面板腾讯云专享版 7.9.3（预装）</strong></li>
+</ul>
+<p><strong>进入面板，安装LNMP，即Nginx、MySQL和PHP，这些环境是运行Typecho程序必不可少的。推荐使用PHP7以上版本，其他保持默认即可。</strong></p>
+<p>看大家网站需要什么环境进行选择。如果是生产环境推荐大家使用编译安装，如果只是测试环境选择极速安装。两者的区别是编译安装慢但稳定，极速安装虽然快但是没编译安装稳定。耐心等待，可以在左上角查看进度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021423263.png" alt="image-20221202142359200"></p>
+<ul>
+<li><strong>nginx-1.20</strong></li>
+<li><strong>pureftpd-1.0.49</strong></li>
+<li><strong>mysql-5.7</strong></li>
+<li><strong>php-8.0</strong></li>
+<li><strong>phpmyadmin-5.1</strong></li>
+</ul>
+<hr>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><ul>
+<li><strong>添加站点</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424966.png" alt="image-20221202142407841"></p>
+<ul>
+<li><strong>填写域名，多个域名分行填写，没有域名可以用ip地址</strong></li>
+<li><strong>FTP文件上传服务可不选，个人认为面板上传文件就很方便</strong></li>
+<li><strong>创建数据库</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424717.png" alt="image-20221202142421606"></p>
+<ul>
+<li><strong>保存好数据库密码以及用户名，后面会用到</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424530.png" alt="image-20221202142429476"></p>
+<h3 id="上传WordPress文件"><a href="#上传WordPress文件" class="headerlink" title="上传WordPress文件"></a>上传WordPress文件</h3><ul>
+<li><strong>进入WordPress官网下载</strong> <a target="_blank" rel="noopener" href="https://wordpress.org/download/">Download | WordPress.org</a></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424901.png" alt="image-20221202142439831"></p>
+<ul>
+<li><strong>打开宝塔面板，进入网站根目录</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021424100.png" alt="image-20221202142456026"></p>
+<ul>
+<li><strong>全选文件删除</strong>（user.ini为放跨站配置可以不删)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425461.png" alt="image-20221202142510289"></p>
+<ul>
+<li><strong>上传WordPress.zip文件压缩包</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425275.png" alt="image-20221202142524079"></p>
+<ul>
+<li><strong>解压缩WordPress.zip到网站根目录</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425016.png" alt="image-20221202142533922"></p>
+<ul>
+<li><strong>删除WordPress.zip压缩包</strong>（可选）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425881.png" alt="image-20221202142546774"></p>
+<ul>
+<li><strong>进入解压出的WordPress文件夹</strong></li>
+<li><strong>全选文件剪贴</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021425857.png" alt="image-20221202142555615"></p>
+<ul>
+<li><strong>返回网站根目录，粘贴</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426490.png" alt="image-20221202142603388"></p>
+<ul>
+<li><strong>保证wordpress的程序在网站根目录中，如下</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426503.png" alt="image-20221202142615296"></p>
+<h3 id="解析域名"><a href="#解析域名" class="headerlink" title="解析域名"></a>解析域名</h3><ul>
+<li><strong>进入域名控制台，添加解析记录</strong></li>
+<li><strong>将你的域名解析到服务器的ip地址</strong></li>
+</ul>
+<p>添加两条解析记录如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426900.png" alt="image-20221202142626834"></p>
+<h3 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h3><ul>
+<li><strong>浏览器地址栏输入你的域名</strong></li>
+<li><strong>进入安装程序，选择语言</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426413.png" alt="image-20221202142635255"></p>
+<ul>
+<li><strong>点击现在就开始</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426591.png" alt="image-20221202142642478"></p>
+<ul>
+<li><strong>输入数据库名和密码</strong>（刚刚保存的）</li>
+<li><strong>提交</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021426187.png" alt="image-20221202142653079"></p>
+<ul>
+<li><strong>运行安装程序</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427775.png" alt="image-20221202142700673"></p>
+<ul>
+<li><strong>设置站点标题、用户名、密码、邮箱</strong>（用于每次登录网站后台）</li>
+<li><strong>安装WordPress</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427929.png" alt="image-20221202142708780"></p>
+<ul>
+<li><strong>登录网站</strong>（使用设置的用户名和密码）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427204.png" alt="image-20221202142719117"></p>
+<ul>
+<li><strong>输入设置的用户名和密码，显示如下页面则安装成功</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427229.png" alt="image-20221202142735954"></p>
+<h3 id="设置伪静态"><a href="#设置伪静态" class="headerlink" title="设置伪静态"></a>设置伪静态</h3><p>这一步尤其重要，正确设置伪静态和固定链接可以保证网站被正常访问，顺序一定不要搞错了，先在宝塔设置伪静态规则，再设置WordPress固定链接，否则可能导致除首页之外的任何页面都访问不了。</p>
+<h4 id="设置伪静态规则"><a href="#设置伪静态规则" class="headerlink" title="设置伪静态规则"></a>设置伪静态规则</h4><ul>
+<li><strong>进入宝塔面板进行站点设置</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021427732.png" alt="image-20221202142748604"></p>
+<ul>
+<li><strong>选择wordpress伪静态，保存</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428874.png" alt="image-20221202142805766"></p>
+<h4 id="设置固定链接"><a href="#设置固定链接" class="headerlink" title="设置固定链接"></a>设置固定链接</h4><ul>
+<li><strong>登录网站后台</strong> 设置→固定链接</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428261.png" alt="image-20221202142813022"></p>
+<ul>
+<li><strong>使用自定义结构，用文章id作为地址</strong></li>
+<li><strong>删除链接中的&#x2F;index.php</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428767.png" alt="image-20221202142824656"></p>
+<ul>
+<li><strong>按照自己想要的连接格式选中即可，保存更改</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021428118.png" alt="image-20221202142834862"></p>
+<hr>
+<h3 id="主题-amp-插件"><a href="#主题-amp-插件" class="headerlink" title="主题 &amp; 插件"></a>主题 &amp; 插件</h3><p>WordPress 博客本身带主题&#x2F;插件商店，因此可以直接在网站后台进行安装并启用，当然也有许多优秀的主题和插件无法在后台中直接安装，那么这些主题和插件需要自己到论坛、网上去找，下载后在网站后台上传，再到网站后台启用即可。</p>
+<hr>
+<h2 id="安装过程可能会遇到的问题"><a href="#安装过程可能会遇到的问题" class="headerlink" title="安装过程可能会遇到的问题"></a>安装过程可能会遇到的问题</h2><ol>
+<li><strong>开启放跨站攻击无法访问站点</strong>（宝塔默认开启）</li>
+</ol>
+<p>​		解决方法一：<a target="_blank" rel="noopener" href="http://sebcxy.com/article/95">宝塔默认启用”防止跨站”攻击后，网站打不开，善用open_basedir参数</a></p>
+<p>​		解决方法二：关闭放跨站攻击（不推荐）</p>
+<ol start="2">
+<li><strong>开启伪固定连接后文章页面无法访问</strong></li>
+</ol>
+<p>​		解决方法：开启伪静态</p>
+<hr>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145116769">宝塔面板安装WordPress（超详细） - 知乎</a></p>
+<p><a target="_blank" rel="noopener" href="http://cloud.yundashi168.com/archives/1039#i-8">使用宝塔面板搭建WordPress网站</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/293c94adc11d">宝塔面板搭建WordPress网站完整教程 - 简书</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>NcPhoton
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.songxin.org/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%90%AD%E5%BB%BAWordPress%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="搭建WordPress个人博客">http://www.songxin.org/2023/01/12/博客搭建/搭建WordPress个人博客/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/wordpress/" rel="tag"># wordpress</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag"># 博客搭建</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%90%AD%E5%BB%BATypecho%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="搭建Typecho个人博客">
+                  <i class="fa fa-chevron-left"></i> 搭建Typecho个人博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E5%A6%82%E4%BD%95%E6%8C%91%E9%80%89%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E5%8F%8A%E5%9C%A8%E7%BA%BF%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0/" rel="next" title="如何挑选博客框架及在线博客平台">
+                  如何挑选博客框架及在线博客平台 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NcPhoton</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

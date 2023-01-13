@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.songxin.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="创建仓库 如图创建一个新的仓库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typora+Github + Picgo打造个人云笔记">
+<meta property="og:url" content="http://www.songxin.org/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Typora+Github%20+%20Picgo%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Nico&#39;s Blog">
+<meta property="og:description" content="创建仓库 如图创建一个新的仓库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526335.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526816.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526356.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526624.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021527042.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021527403.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021527004.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528690.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528949.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528161.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528847.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528504.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529292.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529102.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529731.png">
+<meta property="article:published_time" content="2023-01-12T16:01:47.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:07:33.551Z">
+<meta property="article:author" content="NcPhoton">
+<meta property="article:tag" content="图床">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526335.png">
+
+
+<link rel="canonical" href="http://www.songxin.org/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Typora+Github%20+%20Picgo%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.songxin.org/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Typora+Github%20+%20Picgo%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/","path":"2023/01/13/工具使用/Typora+Github + Picgo打造个人云笔记/","title":"Typora+Github + Picgo打造个人云笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Typora+Github + Picgo打造个人云笔记 | Nico's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<script defer src="/live2d-widget/autoload.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Nico's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">做了一点微小的工作</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90TOKEN"><span class="nav-number">2.</span> <span class="nav-text">生成TOKEN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Picgo%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Picgo配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8D%E8%B4%B9CDN%EF%BC%9AjsDelivr-Github"><span class="nav-number">4.</span> <span class="nav-text">免费CDN：jsDelivr+Github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Typora%E8%AE%BE%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Typora设置</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NcPhoton"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">NcPhoton</p>
+  <div class="site-description" itemprop="description">今日事今日毕</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sxfinn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sxfinn" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:sxnicoa@gmail.com" title="E-Mail → mailto:sxnicoa@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.songxin.org/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Typora+Github%20+%20Picgo%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="NcPhoton">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nico's Blog">
+      <meta itemprop="description" content="今日事今日毕">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Typora+Github + Picgo打造个人云笔记 | Nico's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Typora+Github + Picgo打造个人云笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-01-13 00:01:47 / 修改时间：00:07:33" itemprop="dateCreated datePublished" datetime="2023-01-13T00:01:47+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><ol>
+<li><strong>如图创建一个新的仓库</strong></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526335.png" alt="image-20220518215708783"></p>
+<span id="more"></span>
+
+<ol start="2">
+<li><strong>指定仓库名</strong></li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526816.png" alt="image-20220630083148716"></p>
+<ol start="3">
+<li>下载picgo</li>
+</ol>
+<p>链接如下：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">Releases · Molunerfinn&#x2F;PicGo</a></p>
+<p>下载后一直下一步傻瓜式安装即可。</p>
+<ol start="4">
+<li>进入GitHub图床设置</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526356.png" alt="image-20220518215729404"></p>
+<ul>
+<li>仓库名格式如上：<code>用户名</code> + <code>仓库名</code></li>
+<li>分支名根据你的远程分支自行指定</li>
+</ul>
+<hr>
+<h2 id="生成TOKEN"><a href="#生成TOKEN" class="headerlink" title="生成TOKEN"></a>生成TOKEN</h2><p>进入GitHub网站的设置页面</p>
+<ol>
+<li>进入个人<strong>github</strong>账户setting.</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021526624.png" alt="image-20220518215736888"></p>
+<ol start="2">
+<li>点击Developer settings.</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021527042.png" alt="image-20220518215745836"></p>
+<ol start="3">
+<li>选择Personal access <strong>tokens</strong>.</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021527403.png" alt="image-20220518215753525"></p>
+<ol start="4">
+<li>点击Generate new <strong>token</strong>.</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021527004.png" alt="image-20220518215800979"></p>
+<ol start="5">
+<li>为你创建的<strong>token</strong>添加描述</li>
+</ol>
+<p>描述一下，例如 <code>Test</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528690.png" alt="image-20220518215811289"></p>
+<ol start="6">
+<li><p>选择<strong>token</strong>有效期时间。 </p>
+<p>可以选择永不过期</p>
+</li>
+<li><p>为<strong>token</strong>赋予权限。</p>
+</li>
+<li><p>点击生成。</p>
+</li>
+</ol>
+<hr>
+<h2 id="Picgo配置"><a href="#Picgo配置" class="headerlink" title="Picgo配置"></a>Picgo配置</h2><ul>
+<li>点击左边图床设置，<strong>选择GitHub图床</strong>，具体配置如下</li>
+<li>设定仓库名，填写：<strong>GitHub名&#x2F;库名</strong></li>
+<li>分支，<strong>默认填master</strong></li>
+<li>设定Token，<strong>刚才保存的token令牌</strong></li>
+<li>指定存储路径，<strong>默认填img&#x2F;</strong></li>
+<li>点击确定和设为<strong>默认图床</strong></li>
+</ul>
+<p>一定保存好，这个Token只能查看一次。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528949.png" alt="image-20220518215923781"></p>
+<p><strong>进入PicGo设置，打开时间戳重命名</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528161.png" alt="image-20220518215930367"></p>
+<p>时间戳可以防止命名冲突。</p>
+<hr>
+<h2 id="免费CDN：jsDelivr-Github"><a href="#免费CDN：jsDelivr-Github" class="headerlink" title="免费CDN：jsDelivr+Github"></a>免费CDN：jsDelivr+Github</h2><p>如果默认不适用自定义域名，<strong>github</strong>里边这个地方是比较蛋疼的一点，上传的图片啥的，他会给你上传到另一个<strong>文件服务器</strong>里边，这个地址国内不使用vpn是无法访问的，而我们<strong>本地typora的图片链接</strong>和<strong>GitHub远端存储</strong>的链接是一样的，通常如下：<code>https://raw.githubusercontent.com/sxfinn/Pic/master/img/202204120923663.png</code>。</p>
+<p>但是这个链接我们在国内是无法访问的，因此需求是给自己个人博客搭建图床的同学就会出现图片无法访问的问题。</p>
+<p><strong>解决方法：</strong></p>
+<p><strong>CDN</strong>的全称是<strong>Content Delivery Network</strong>，<strong>即内容分发网络</strong>。CDN是构建在网络之上的内容分发网络，依靠部署在各地的边缘服务器，通过中心平台的<strong>负载均衡</strong>、<strong>内容分发</strong>、<strong>调度等功能模块</strong>，使用户<strong>就近获取所需内容</strong>，降低网络拥塞，<strong>提高用户访问响应速度和命中率</strong>。CDN的关键技术主要有<strong>内容存储和分发技术</strong>。——百度百科</p>
+<p><strong>放在Github的资源在国内加载速度比较慢</strong>，因此需要使用CDN加速来优化网站打开速度，<strong>jsDelivr + Github</strong>便是免费且好用的CDN，非常适合博客网站使用。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p><strong>Picgo中设定自定义域名</strong>，自定义域名格式可以是你的 <strong>用户名&#x2F;仓库名</strong> 前加上<code>https://cdn.jsdelivr.net/gh</code>，这样可以加速我们对图片的访问，默认不更改的话图片会是使用如下<code>raw.githubusercontent</code> <strong>前缀</strong>的链接。</p>
+<p>使用CND加速后，Typora文档的图片的链接会变成我们设置的自定义域名 ：<code>https://cdn.jsdelivr.net/gh/用户名/仓库名/2022xxxxxx.png</code>，而如果我们将文档上传到GitHub服务器上,链接则通常如下：</p>
+<p><code>https://camo.githubusercontent.com/e27aa2f17225d131bfa13f46412a4cee2ec4796a29f62fca34cebc2421bc2efe/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f737866696e6e2f5069632f696d672f3230323230343132303935393338322e706e67</code></p>
+<p>例如：我写下这篇文章时的同一张图片</p>
+<ul>
+<li>GitHub上远端的链接</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528847.png" alt="image-20220518215941821"></p>
+<ul>
+<li>本地typora的图片链接</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021528504.png" alt="image-20220518220004544"></p>
+<p><strong>GitHub</strong>给出如下解释：为托管您的图像，<strong>GitHub</strong> 使用 开源项目 <strong>Camo</strong>。<strong>Camo</strong> 为每幅图像生成开头为 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=FVfTQdJcnfN8CKb5g+CXBQ==.6G/0HTMeWyqzLrQ35QGorFMAu8rUW8wz+I2As6eE5zgPtIZzA4oV9OfANMP/4b0u">https://camo.githubuserconten...</a> 的<strong>匿名 URL 代理</strong>，将会对其他用户隐藏您的浏览器详细信息和相关信息。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/57857193/github-image-without-camo">Github image without camo - Stack Overflow</a></p>
+<p>由于<strong>raw.githubusercontent.com</strong> 国内域名无法访问，</p>
+<p>如果我们想要在个人博客中插入图片这两种前缀的链接都可以使用：</p>
+<ol>
+<li>camo.githubusercontent.com …</li>
+<li>cdn.jsdelivr.net&#x2F;gh …</li>
+</ol>
+<hr>
+<h2 id="Typora设置"><a href="#Typora设置" class="headerlink" title="Typora设置"></a>Typora设置</h2><ul>
+<li><strong>进入typora偏好设置</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529292.png" alt="image-20220518220012516"></p>
+<ul>
+<li><strong>进入图像</strong></li>
+</ul>
+<p>勾选对本地和网络位置上的照片应用上规则。</p>
+<p>上传服务选择Picgo</p>
+<p>路径是你的Picgo的安装目录，通常在 <strong>Program File</strong>目录中。</p>
+<p>以上步骤完成后，点击 <strong>验证图片上传选项</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529102.png" alt="image-20220518220019485" style="zoom:67%;" />
+
+<p>如上图就成功上传了</p>
+<ul>
+<li>进入GitHub查看图片</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021529731.png" alt="image-20220518220025767"></p>
+<hr>
+<p>参考文章：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/168729465">PicGo图床与Typora（PicGo+Typora+GitHub的完整设置） - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1789847">搭建自己的图床 - 腾讯云开发者社区-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a36e9c64361d">Github+jsDelivr+PicGo 打造稳定快速、高效免费图床 - 简书</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ityinhu.com/365.html">使用jsdelivr+Github加速文件 - 银狐笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lfri/p/12212878.html">快速免费的公用 CDN —— jsDelivr - Rogn - 博客园</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>NcPhoton
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.songxin.org/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Typora+Github%20+%20Picgo%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/" title="Typora+Github + Picgo打造个人云笔记">http://www.songxin.org/2023/01/13/工具使用/Typora+Github + Picgo打造个人云笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag"># 图床</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/Nodejs%E5%AE%89%E8%A3%85/" rel="prev" title="Nodejs安装">
+                  <i class="fa fa-chevron-left"></i> Nodejs安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/13/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/VScode%20%E4%BF%AE%E6%94%B9%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95/" rel="next" title="VScode 修改插件安装目录">
+                  VScode 修改插件安装目录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NcPhoton</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

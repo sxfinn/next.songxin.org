@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.songxin.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="准备首先你得有个备案了的域名，之前腾讯云是可以支持默认CDN加速域名的，不过目前已经无法使用了，因此我们只能使用自定义域名了。 腾讯云：对象存储 开启默认 CDN 加速域名-控制台指南-文档中心-腾讯云-腾讯云  自2022年5月9日起，对象存储（Cloud Object Storage，COS）服务将不再支持新增默认 CDN 加速域名。您已开启、或曾经开启的默认 CDN 加速域名不会受到影响，可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="腾讯云CDN加速COS图床">
+<meta property="og:url" content="http://www.songxin.org/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCOS%E5%9B%BE%E5%BA%8A/index.html">
+<meta property="og:site_name" content="Nico&#39;s Blog">
+<meta property="og:description" content="准备首先你得有个备案了的域名，之前腾讯云是可以支持默认CDN加速域名的，不过目前已经无法使用了，因此我们只能使用自定义域名了。 腾讯云：对象存储 开启默认 CDN 加速域名-控制台指南-文档中心-腾讯云-腾讯云  自2022年5月9日起，对象存储（Cloud Object Storage，COS）服务将不再支持新增默认 CDN 加速域名。您已开启、或曾经开启的默认 CDN 加速域名不会受到影响，可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508856.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508914.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508132.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508675.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508973.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508860.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508403.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021509247.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021509061.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021509528.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021510913.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021511928.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021511633.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021511185.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021512155.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021512921.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021512529.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021513402.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514076.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514606.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514803.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514131.png">
+<meta property="article:published_time" content="2023-01-12T15:57:59.000Z">
+<meta property="article:modified_time" content="2023-01-12T16:08:16.024Z">
+<meta property="article:author" content="NcPhoton">
+<meta property="article:tag" content="图床">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508856.png">
+
+
+<link rel="canonical" href="http://www.songxin.org/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCOS%E5%9B%BE%E5%BA%8A/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://www.songxin.org/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCOS%E5%9B%BE%E5%BA%8A/","path":"2023/01/12/工具使用/腾讯云CDN加速COS图床/","title":"腾讯云CDN加速COS图床"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>腾讯云CDN加速COS图床 | Nico's Blog</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<script defer src="/live2d-widget/autoload.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Nico's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">做了一点微小的工作</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%85%A5%E5%9F%9F%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">接入域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E9%80%9A-CDN-%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.</span> <span class="nav-text">开通 CDN 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.2.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">域名配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E9%85%8D%E7%BD%AE-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">域名配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-%E8%A7%A3%E6%9E%90%E9%AA%8C%E8%AF%81%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.3.2.</span> <span class="nav-text">DNS 解析验证操作步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%AB%99%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.3.</span> <span class="nav-text">源站配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.4.</span> <span class="nav-text">服务配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E9%87%8F%E5%B0%81%E9%A1%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.5.</span> <span class="nav-text">用量封顶配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%85%A5%E5%AE%8C%E6%88%90"><span class="nav-number">2.3.6.</span> <span class="nav-text">接入完成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90CDN%E5%9F%9F%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">解析CDN域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81-CNAME-%E6%98%AF%E5%90%A6%E7%94%9F%E6%95%88"><span class="nav-number">3.1.</span> <span class="nav-text">验证 CNAME 是否生效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AECDN%E5%9F%9F%E5%90%8D"><span class="nav-number">4.</span> <span class="nav-text">配置CDN域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B3%E8%AF%B7ssl%E8%AF%81%E4%B9%A6"><span class="nav-number">4.1.</span> <span class="nav-text">申请ssl证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%81%E4%B9%A6"><span class="nav-number">4.2.</span> <span class="nav-text">添加证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Picgo%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">Picgo配置</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="NcPhoton"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">NcPhoton</p>
+  <div class="site-description" itemprop="description">今日事今日毕</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sxfinn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sxfinn" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:sxnicoa@gmail.com" title="E-Mail → mailto:sxnicoa@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.songxin.org/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCOS%E5%9B%BE%E5%BA%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="NcPhoton">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nico's Blog">
+      <meta itemprop="description" content="今日事今日毕">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="腾讯云CDN加速COS图床 | Nico's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          腾讯云CDN加速COS图床
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-12 23:57:59" itemprop="dateCreated datePublished" datetime="2023-01-12T23:57:59+08:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-01-13 00:08:16" itemprop="dateModified" datetime="2023-01-13T00:08:16+08:00">2023-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>首先你得有个备案了的域名，之前腾讯云是可以支持默认CDN加速域名的，不过目前已经无法使用了，因此我们只能使用自定义域名了。</p>
+<p>腾讯云：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/436/36636">对象存储 开启默认 CDN 加速域名-控制台指南-文档中心-腾讯云-腾讯云</a></p>
+<blockquote>
+<p>自2022年5月9日起，对象存储（Cloud Object Storage，COS）服务将不再支持新增默认 CDN 加速域名。您已开启、或曾经开启的默认 CDN 加速域名不会受到影响，可以继续使用，但建议您使用自定义 CDN 加速域名代替默认 CDN 加速域名。关于自定义 CDN 加速域名的操作指引，请参见 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/436/36637">开启自定义 CDN 加速域名</a> 文档。</p>
+</blockquote>
+<hr>
+<span id="more"></span>
+
+<h2 id="接入域名"><a href="#接入域名" class="headerlink" title="接入域名"></a>接入域名</h2><p>步骤如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508856.png" alt="img"></p>
+<h3 id="开通-CDN-服务"><a href="#开通-CDN-服务" class="headerlink" title="开通 CDN 服务"></a>开通 CDN 服务</h3><p>配置 CDN 前，您需要 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/3149">开通 CDN 服务</a>。如果您已开通 CDN 服务，请继续后续操作步骤.</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>进入 CDN 控制台，在左侧导航栏中找到<strong>域名管理</strong>，单击<strong>添加域名</strong>。</p>
+<h3 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h3><ol>
+<li><p>选择加速区域</p>
+</li>
+<li><p>填写加速域名</p>
+<p>如果您接入的域名为以下情况，则需要进行域名归属权验证，验证步骤请参考下方：</p>
+<ul>
+<li>首次接入该域名。</li>
+<li>该域名已被其他用户接入。</li>
+<li>接入域名为泛域名。</li>
+</ul>
+</li>
+<li><p>选择加速类型</p>
+</li>
+<li><p>其他选填项(后续可在域名管理中更改)</p>
+</li>
+</ol>
+<h4 id="域名配置-1"><a href="#域名配置-1" class="headerlink" title="域名配置"></a>域名配置</h4><ul>
+<li>我只有一个备案了的域名，因此我选择使用此域名加前缀子域名作为我的加速域名</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508914.png" alt="image-20220518132526621"></p>
+<p>由于我已经做过了CDN接入，因此这里不在显示需要验证，通常我们还需要DNS解析验证，步骤如下：</p>
+<h4 id="DNS-解析验证操作步骤"><a href="#DNS-解析验证操作步骤" class="headerlink" title="DNS 解析验证操作步骤"></a>DNS 解析验证操作步骤</h4><ol>
+<li><p>单击<strong>验证方法</strong>，获取 DNS 验证所需要的解析记录信息，在验证完成前保持页面打开。<br><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508132.png" alt="img"></p>
+</li>
+<li><p>如果您的域名解析商为腾讯云，进入 <a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/cns">域名服务控制台</a>，找到该域名并单击解析，添加一条记录类型为 TXT 的 DNS 记录，主机记录填写为 <code>_cdnauth</code>。<br><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508675.png" alt="img"><br>如果您的域名解析商为阿里云，同样找到该域名并单击解析，添加一条记录类型为 TXT 的 DNS 记录，主机记录填写为 <code>_cdnauth</code>。<br><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508973.png" alt="img"></p>
+<p>如果您的域名解析商为阿里云，进入域名服务控制台，找到该域名并单击解析，添加一条记录类型为 TXT 的 DNS 记录，主机记录填写为 <code>_cdnauth</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508860.png" alt="image-20220518131653355"></p>
+</li>
+<li><p>等待 TXT 解析生效，单击<strong>验证</strong>按钮进行验证。<br><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021508403.png" alt="img"></p>
+</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<p>为接入域名验证归属权添加 TXT 记录，无论接入的是三级域名（如：<code>a.test.com</code>）还是多级域名（<code>a.b.test.com</code>），均是在主域名（<code>test.com</code>）下进行的，主域名前的主机记录值填写为：<code>_cdnauth</code>。</p>
+</blockquote>
+<h4 id="源站配置"><a href="#源站配置" class="headerlink" title="源站配置"></a>源站配置</h4><ol>
+<li>选择源站类型</li>
+<li>选择回源协议</li>
+<li>输入源站地址</li>
+<li>配置回源 HOST</li>
+</ol>
+<p>我们使用的是腾讯云的COS源直接选择就好，回源协议就选择https，如果你的存储桶是<strong>私有读写</strong>，那么开启私有桶访问权限。</p>
+<p>由于是COS源不需要我们去输入地址，腾讯云中可以直接选择。</p>
+<p>回源HOST会在源站地址选择后自动填入，不需要手动输入。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021509247.png" alt="image-20220518130104117"></p>
+<h4 id="服务配置"><a href="#服务配置" class="headerlink" title="服务配置"></a>服务配置</h4><p>由于我并没有大文件资源，因此不需要开启分片回源（这里根据个人需求选择）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021509061.png" alt="image-20220518130412724"></p>
+<h4 id="用量封顶配置"><a href="#用量封顶配置" class="headerlink" title="用量封顶配置"></a>用量封顶配置</h4><p>根据个人需求选择，这里我是默认配置；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021509528.png" alt="image-20220518130538604"></p>
+<p>全部配置结束后点击“确认提交”</p>
+<h4 id="接入完成"><a href="#接入完成" class="headerlink" title="接入完成"></a>接入完成</h4><p>完成添加域名操作后，请耐心等待域名配置下发至全网节点，下发时间约5 - 10分钟。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021510913.png" alt="img"></p>
+<hr>
+<h2 id="解析CDN域名"><a href="#解析CDN域名" class="headerlink" title="解析CDN域名"></a>解析CDN域名</h2><p>当您在腾讯云 CDN 内成功完成添加域名后，腾讯云 CDN 会为您的域名分配一个专属的 CNAME 地址，您还需要完成 CNAME 配置，才可以将用户的访问指向腾讯云 CDN 节点，使CDN加速生效。</p>
+<ol>
+<li>返回域名管理，在您域名成功解析前，CNAME 处会有提示 icon。复制此处的 CNAME 值。</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021511928.png" alt="image-20220518132818476"></p>
+<ol start="2">
+<li><p>进入您的域名解析商域名控制台，我这里用的是阿里云。</p>
+</li>
+<li><p>单击要解析的域名，进入解析记录页。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021511633.png" alt="image-20220518133059663"></p>
+</li>
+<li><p>进入解析记录页后，单击<strong>添加记录</strong>按钮，开始设置解析记录。</p>
+<p>（这里我添加pic子域名域名进行演示）</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021511185.png" alt="image-20220518133245705"></p>
+<ol start="5">
+<li>将记录类型选择为 CNAME。主机记录即域名前缀，可任意填写（如：pic）。记录值填写为步骤1中复制的CNAME值。解析线路，TTL 默认即可。</li>
+</ol>
+<p><strong>注意</strong>：这里我的图片配得有点问题，应该是使用哪个自定义域名就添加相应的CNAME的解析记录，我有两个自定义CDN域名，由于imge.xinsong.xyz已经在使用了，所以这里我使用了pic.xinsong.xyz来演示。</p>
+<h3 id="验证-CNAME-是否生效"><a href="#验证-CNAME-是否生效" class="headerlink" title="验证 CNAME 是否生效"></a>验证 CNAME 是否生效</h3><p>不同的 DNS 服务商CNAME 生效的时间略有不同，一般在半个小时之内生效。您可以通过 nslookup 或 dig 的方式来查询 CNAME 是否生效，若应答的CNAME记录是我们配置的CNAME，则说明配置成功，此时您已成功开启加速服务。</p>
+<p>这里我使用dig的方法验证。</p>
+<p>打开CMD ，命令行输入dig + 你的自定义域名；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021512155.png" alt="image-20220518133618125"></p>
+<hr>
+<h2 id="配置CDN域名"><a href="#配置CDN域名" class="headerlink" title="配置CDN域名"></a>配置CDN域名</h2><p>进入CDN控制台—&gt;域名管理—&gt;要配置的域名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021512921.png" alt="image-20220518134043491"></p>
+<p>访问控制可以进行防盗链配置以及ip黑白名单等，这里我仅仅设置了ip限频</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021512529.png" alt="image-20220518134222118"></p>
+<p>根据个人需求配置即可。</p>
+<h3 id="申请ssl证书"><a href="#申请ssl证书" class="headerlink" title="申请ssl证书"></a>申请ssl证书</h3><p>通常一个ssl证书只能绑定一个域名，即使是子域名也是需要的。因此还需要申请一个证书并且绑定我们的CDN域名。</p>
+<p>腾讯云提供了免费的证书申请，期限为一年过期了重新申请就行。</p>
+<p> 申请免费证书：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/6814">https://cloud.tencent.com/document/product/400/6814</a></p>
+<p>流程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021513402.png" alt="img"></p>
+<p>比较简单，具体参照官方文档。</p>
+<h3 id="添加证书"><a href="#添加证书" class="headerlink" title="添加证书"></a>添加证书</h3><p>申请结束后，进入“https配置”中添加证书；</p>
+<p>腾讯云中申请的证书由腾讯云托管，我们选择已托管证书中添加证书。</p>
+<p>https配置指南：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/41687">https://cloud.tencent.com/document/product/228/41687</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514076.png" alt="image-20220518140646331"></p>
+<p><strong>配置https，建议如下图更改</strong></p>
+<ol>
+<li>打开HTTPS 2.0；</li>
+<li>开启HTTPS强制跳转；</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514606.png" alt="image-20220518140519520"></p>
+<hr>
+<h2 id="Picgo配置"><a href="#Picgo配置" class="headerlink" title="Picgo配置"></a>Picgo配置</h2><p>到这里就可以使用我们的CDN域名了。</p>
+<p>进入Picgo腾讯云COS设置：</p>
+<p>这里只用修改两个东西</p>
+<p>存储路径：随便一个名字</p>
+<p>设定自定义域名：将您<strong>接入的域名</strong>填入“设定自定义域名”一栏</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514803.png" alt="image-20220519110831849"></p>
+<p>验证图片上传选项</p>
+<p><img src="https://cdn.jsdelivr.net/gh/sxfinn/CDN/img/202212021514131.png" alt="image-20220519105752449"></p>
+<p>到此就结束了，我们可以使用腾讯云提供的CDN服务了。</p>
+<hr>
+<p>参考文章：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/436/36637">对象存储 开启自定义 CDN 加速域名-控制台指南-文档中心-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/41215">内容分发网络 CDN 接入域名-快速入门-文档中心-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/3121">内容分发网络 CDN 配置 CNAME-快速入门-文档中心-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/37851">内容分发网络 CDN 配置指南-文档中心-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/228/6283">内容分发网络 CDN 域名配置-配置指南-文档中心-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.itxiaoli.cn/archives/cosCdn.html">腾讯云cos接入腾讯cdn加速图床 - it小离</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>NcPhoton
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.songxin.org/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E8%85%BE%E8%AE%AF%E4%BA%91CDN%E5%8A%A0%E9%80%9FCOS%E5%9B%BE%E5%BA%8A/" title="腾讯云CDN加速COS图床">http://www.songxin.org/2023/01/12/工具使用/腾讯云CDN加速COS图床/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag"># 图床</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E4%BD%BF%E7%94%A8Google/" rel="prev" title="如何高效的使用Google">
+                  <i class="fa fa-chevron-left"></i> 如何高效的使用Google
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/12/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/%E8%85%BE%E8%AE%AF%E4%BA%91COS+Picgo%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/" rel="next" title="腾讯云COS+Picgo搭建图床">
+                  腾讯云COS+Picgo搭建图床 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NcPhoton</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
